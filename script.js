@@ -11,6 +11,7 @@ let name = document.getElementById("name");
 let timezone = document.getElementById("timezone");
 let population = document.getElementById("population");
 let error = document.getElementById("error");
+let lang = document.getElementById("lang");
 
 search.onclick = async () => {
   const get_data = async () => {
@@ -27,7 +28,7 @@ search.onclick = async () => {
       capital.innerText = `Capital - ${data[0].capital[0]}`;
       currency.innerText = `Currency - ${
         data[0].currencies[Object.keys(data[0].currencies)].name
-      } - ${Object.keys(data[0].currencies)[0]}`;
+      } \( ${data[0].currencies[Object.keys(data[0].currencies)].symbol} \)`;
       continent.innerText = `Continent - ${data[0].continents[0]}`;
       alt.innerText = `Alt name - ${data[0].altSpellings[0]}`;
       if (data[0].unMember == true) {
@@ -38,8 +39,10 @@ search.onclick = async () => {
 
       timezone.innerText = `Timezone - ${data[0].timezones[0]}`;
       population.innerText = `Population - ${data[0].population} peoples`;
+      lang.innerText = ` Languages - ${Object.values(data[0].languages).toString().split(",").join(", ")}
+        `;
     } catch (err) {
-      error.innerText = `Country not found. Kindly check your spelling!`;
+      error.innerText = `Country not found. Kindly check your spellings!`;
       setTimeout(() => {
         error.innerText = "";
       }, 4000);
