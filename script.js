@@ -39,7 +39,7 @@ search.onclick = async () => {
       timezone.innerText = `Timezone - ${data[0].timezones[0]}`;
       population.innerText = `Population - ${data[0].population} peoples`;
     } catch (err) {
-      error.innerText = `Got an error. Kindly check your spellings!`;
+      error.innerText = `Country not found. Kindly check your spelling!`;
       setTimeout(() => {
         error.innerText = "";
       }, 4000);
